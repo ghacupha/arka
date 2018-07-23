@@ -1,0 +1,20 @@
+
+# mac stuff
+*.DS_Store
+
+# gradle stuff
+.gradle/
+build/
+
+# Eclipse stuff
+.project
+.classpath
+.settings/
+bin/
+
+# maven stuff
+target/
+
+# Idea stuff
+.idea/
+*.iml
