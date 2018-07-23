@@ -301,7 +301,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author edwin_njeru
  * @version $Id: $Id
  */
-public class Plugins {
+public final class Plugins {
     /**
      * Prefix to system property keys for specifying plugin classes.
      */

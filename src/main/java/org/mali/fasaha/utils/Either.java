@@ -21,7 +21,55 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
- * A minimal implementation of Either.
+ * A minimal implementation of Either similar to the implementation in the Scala API.
+ * This represents a value of one of two possible types (a disjoint union). An instance of
+ * {@link Either} is an instance of either Left or Right.
+ * <br>
+ * A common use of {@link Either} is an alternative to {@link Optional}, or such a circumstance
+ * with possibly missing values. Conventionally Left is used when there is failure and Right when
+ * successful. The same could also be used whenever we expect failure.
+ * <br>
+ * For instance lets say you wanted to create a function that you know could return an exception
+ * depending on how the client were to apply it. You could return a map containing the answer
+ * and the Exception. When successful the exception is null. When there is an exception the
+ * result will be null as shown here
+ * <pre>
+ * {@code
+ *   class DividedByZeroException extends RuntimeException{
+ *         DividedByZeroException(final String message) {
+ *             super(message);
+ *         }
+ *     }
+ *
+ *   Map<String, Object> divide (double numerator, double divisor) {
+ * 	    Map<String, Object> result = new HashMap<>();
+ *         if (divisor == 0 && numerator != 0) {
+ *             result.put("Exception", new DividedByZeroException("Attempted To Divide By Zero"));
+ *             result.put("Division", null);
+ *             return result;
+ *         } else {
+ *             result.put("Exception", null);
+ *             result.put("Division", numerator/divisor);
+ *             return result;
+ *         }
+ *     }
+ *
+ * }
+ * </pre>
+ * That looks busy, you also miss out on type checking. Instead you could put the results in either.
+ * Exception goes left side when there's failure, result goes right side when the divide function is
+ * successful:
+ * <pre>
+ *     {@code 
+ *      Either<DividedByZeroException, Double> divide(double numerator, double divisor) {
+ * 	     if (divisor == 0 && numerator != 0) {
+ * 	         return Either.createLeft(new DividedByZeroException(format("Could not divide the number: %s by zero",numerator)));
+ *          } else {
+ * 	         return Either.createRight(numerator/divisor);
+ *          }
+ *       }
+ *     }
+ * </pre>
  *
  * @author edwin_njeru
  * @version $Id: $Id
@@ -35,7 +83,7 @@ public abstract class Either<L, R> {
      *
      * @param l a L object.
      * @param r a R object.
-     * @return a {@link org.mali.fasaha.utils.Either} object.
+     * @return a {@link Either} object.
      * @param <L> a L object.
      * @param <R> a R object.
      */
