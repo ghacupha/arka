@@ -4,10 +4,10 @@ Changelog for arka implementation by mali-fasaha
 ## Unreleased
 ### No issue
 
-**Initial upload**
+**Fixed javadoc errors in Converter**
 
 
-[e4b0b80f22ba920](https://github.com/mali-fasaha/arka/commit/e4b0b80f22ba920) ghacupha *2018-07-23 13:25:05*
+[3e0a32b2ccc1578](https://github.com/mali-fasaha/arka/commit/3e0a32b2ccc1578) ghacupha *2018-07-23 15:53:03*
 
 
 

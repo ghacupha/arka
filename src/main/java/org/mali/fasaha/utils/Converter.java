@@ -23,6 +23,79 @@ import static java.util.Objects.requireNonNull;
 
 /**
  * A {@link org.mali.fasaha.utils.Converter} which may receive null and may return null.
+ * The application of the class is pretty standard but the internal implementation is designed to
+ * allow definition using a functional interface of typical functional approaches, such as the one
+ * shown:
+ * <pre>
+ *     {@code
+ *     Converter<String, Integer> stringIntegerConverter =
+ *         Converter.from(Integer::valueOf, String::valueOf, "stringIntegerConverter");
+ *     }
+ * </pre>
+ * The Converter interface may also be defined using the good old anonymous class:
+ * <pre>
+ *     {@code
+ *      Converter<String, Integer> integerConverter = new Converter<String, Integer>() {
+ *             public Integer convertNonNull(final String s) {
+ *
+ *                 return Integer.valueOf(s);
+ *             }
+ *
+ *             public String revertNonNull(final Integer integer) {
+ *
+ *                 return String.valueOf(integer);
+ *             }
+ *         };
+ *     }
+ * </pre>
+ * Once defined the converter can be used to convert Type A to Type B, using the
+ * {@link #convertNonNull(Object)} method.
+ * <pre>
+ *     {@code
+ *     assertEquals(Integer.valueOf("654"), stringIntegerConverter.convertNonNull("654"));
+ *     }
+ * </pre>
+ * The same definition can be used to do reverse conversions from Type B to Type A, using the
+ * {@link #revertNonNull(Object)} method.
+ * <pre>
+ *     {@code
+ *     assertEquals(String.valueOf(654), stringIntegerConverter.revertNonNull(654));
+ *     }
+ * </pre>
+ * You could achieve the same result by creating a reverse converter first, using the the
+ * {@link #reverse()} method, like the method here:
+ * <pre>
+ *     {@code
+ *     Converter<Integer, String> integerStringConverter = stringIntegerConverter.reverse();
+ *     assertEquals("7895", integerStringConverter.convertNonNull(7895));
+ *     }
+ * </pre>
+ * The {@link #andThen(Converter)} enables you to chain converters coming up with one
+ * that does something entirely different. This could save the developer a lot of code.
+ * <br>
+ * In the illustration below we are going to chain a StringToInteger converter with an
+ * IntegerToDouble converter. What is happening is that the output from the StringToInteger
+ * converter is fed into the IntegerToDouble Converter. Effectively we will have created a
+ * kind of StringToDoubleConverter:
+ * <pre>
+ * {@code
+ * List<String> stringList = ImmutableList.of("10", "45", "65", "89");
+ *
+ * Converter<Integer, Double> intDoubleConverter =
+ *             Converter.from(Integer::doubleValue, Double::intValue, "intDoubleConverter");
+ * }
+ * </pre>
+ * Now we come in with {@link #andThen(Converter)} method and use it to extend the stringIntegerConverter
+ * we defined before with the new intDoubleConverter, like so:
+ * <pre>
+ *     {@code
+ *     Converter<String, Double> stringDoubleConverter = stringIntegerConverter.andThen(intDoubleConverter);
+ *
+ *     List<Double> doubles = new ArrayList<>();
+ *
+ *     stringDoubleConverter.convertAll(stringList).forEach(doubles::add);
+ *     }
+ * </pre>
  *
  * @param <A> Parameter type A to be converted to type B
  * @param <B> Parameter type B into which we have converted type A from

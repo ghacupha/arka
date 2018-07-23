@@ -67,8 +67,7 @@ public class ConverterTest {
         Converter<Integer, Double> intDoubleConverter =
             Converter.from(Integer::doubleValue, Double::intValue, "intDoubleConverter");
 
-        Converter<String, Double> stringDoubleConverter =
-            stringIntegerConverter.andThen(intDoubleConverter);
+        Converter<String, Double> stringDoubleConverter = stringIntegerConverter.andThen(intDoubleConverter);
 
         List<Double> doubles = new ArrayList<>();
         stringDoubleConverter.convertAll(stringList).forEach(doubles::add);
@@ -88,9 +87,29 @@ public class ConverterTest {
 
     @Test
     public void reverse() {
+
+        Converter<Integer, String> integerStringConverter = stringIntegerConverter.reverse();
+
+        assertEquals("7895", integerStringConverter.convertNonNull(7895));
     }
 
     @Test
     public void convertAll() {
+        List<String> stringList = ImmutableList.of("10", "45", "65", "89");
+
+        List<Integer> integers = new ArrayList<>();
+
+        stringIntegerConverter.convertAll(stringList).forEach(integers::add);
+
+        assertEquals(4, integers.size());
+        assertEquals(10.00, integers.get(0), 0);
+        assertEquals(45.00, integers.get(1), 0);
+        assertEquals(65.00, integers.get(2), 0);
+        assertEquals(89.00, integers.get(3), 0);
+        assertSame(integers.get(0).getClass(), Integer.class);
+        assertSame(integers.get(1).getClass(), Integer.class);
+        assertSame(integers.get(2).getClass(), Integer.class);
+        assertSame(integers.get(3).getClass(), Integer.class);
+
     }
 }
