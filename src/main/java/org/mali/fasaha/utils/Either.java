@@ -21,18 +21,16 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
- * A minimal implementation of Either similar to the implementation in the Scala API.
- * This represents a value of one of two possible types (a disjoint union). An instance of
- * {@link Either} is an instance of either Left or Right.
+ * A minimal implementation of Either abstraction similar to the implementation in the Scala API. This is an abstraction that
+ * represents a value of one of two possible types (a disjoint union). An instance of {@link Either} is an
+ * instance of either Left or Right.
  * <br>
- * A common use of {@link Either} is an alternative to {@link Optional}, or such a circumstance
- * with possibly missing values. Conventionally Left is used when there is failure and Right when
- * successful. The same could also be used whenever we expect failure.
+ * A common use of {@link Either} is an alternative to {@link Optional}, or such a circumstance with possibly missing values.
+ * Conventionally Left is used when there is failure and Right when successful. The same could also be used whenever we expect failure.
  * <br>
- * For instance lets say you wanted to create a function that you know could return an exception
- * depending on how the client were to apply it. You could return a map containing the answer
- * and the Exception. When successful the exception is null. When there is an exception the
- * result will be null as shown here
+ * For instance lets say you wanted to create a function that you know could return an exception depending on how the client were to
+ * apply it. You could return a map containing the answer and the Exception. When successful the exception is null.
+ * When there is an exception the result will be null as shown here:
  * <pre>
  * {@code
  *   class DividedByZeroException extends RuntimeException{
@@ -41,8 +39,8 @@ import java.util.function.Function;
  *         }
  *     }
  *
- *   Map<String, Object> divide (double numerator, double divisor) {
- * 	    Map<String, Object> result = new HashMap<>();
+ *    Map<String, Object> divide (double numerator, double divisor) {
+ *       Map<String, Object> result = new HashMap<>();
  *         if (divisor == 0 && numerator != 0) {
  *             result.put("Exception", new DividedByZeroException("Attempted To Divide By Zero"));
  *             result.put("Division", null);
@@ -56,16 +54,15 @@ import java.util.function.Function;
  *
  * }
  * </pre>
- * That looks busy, you also miss out on type checking. Instead you could put the results in either.
- * Exception goes left side when there's failure, result goes right side when the divide function is
+ * That looks busy, you also miss out on type checking. Instead you could put the results in Either. Exception goes left side when there's failure, result goes right side when the divide function is
  * successful:
  * <pre>
- *     {@code 
+ *     {@code
  *      Either<DividedByZeroException, Double> divide(double numerator, double divisor) {
- * 	     if (divisor == 0 && numerator != 0) {
- * 	         return Either.createLeft(new DividedByZeroException(format("Could not divide the number: %s by zero",numerator)));
+ *        if (divisor == 0 && numerator != 0) {
+ *            return Either.createLeft(new DividedByZeroException(format("Could not divide the number: %s by zero",numerator)));
  *          } else {
- * 	         return Either.createRight(numerator/divisor);
+ *            return Either.createRight(numerator/divisor);
  *          }
  *       }
  *     }
@@ -81,11 +78,11 @@ public abstract class Either<L, R> {
     /**
      * Creates a left or right, depending on which element is non-null.  Precisely one element should be non-null.
      *
-     * @param l a L object.
-     * @param r a R object.
-     * @return a {@link Either} object.
+     * @param l   a L object.
+     * @param r   a R object.
      * @param <L> a L object.
      * @param <R> a R object.
+     * @return a {@link Either} object.
      */
     public static <L, R> Either<L, R> create(L l, R r) {
         if (l == null && r != null) {
@@ -104,10 +101,10 @@ public abstract class Either<L, R> {
     /**
      * Creates an instance of Left.
      *
-     * @param l a L object.
-     * @return a {@link org.mali.fasaha.utils.Either} object.
+     * @param l   a L object.
      * @param <L> a L object.
      * @param <R> a R object.
+     * @return a {@link org.mali.fasaha.utils.Either} object.
      */
     public static <L, R> Either<L, R> createLeft(L l) {
         return new Left<>(l);
@@ -116,10 +113,10 @@ public abstract class Either<L, R> {
     /**
      * Creates an instance of Right.
      *
-     * @param r a R object.
-     * @return a {@link org.mali.fasaha.utils.Either} object.
+     * @param r   a R object.
      * @param <L> a L object.
      * @param <R> a R object.
+     * @return a {@link org.mali.fasaha.utils.Either} object.
      */
     public static <L, R> Either<L, R> createRight(R r) {
         return new Right<>(r);
@@ -198,10 +195,10 @@ public abstract class Either<L, R> {
     /**
      * Applies either the left or the right function as appropriate.
      *
-     * @param left a {@link java.util.function.Function} object.
+     * @param left  a {@link java.util.function.Function} object.
      * @param right a {@link java.util.function.Function} object.
+     * @param <T>   a T object.
      * @return a T object.
-     * @param <T> a T object.
      */
     public final <T> T fold(Function<? super L, ? extends T> left, Function<? super R, ? extends T> right) {
         if (isLeft()) {
@@ -214,7 +211,7 @@ public abstract class Either<L, R> {
     /**
      * Accepts either the left or the right consumer as appropriate.
      *
-     * @param left a {@link java.util.function.Consumer} object.
+     * @param left  a {@link java.util.function.Consumer} object.
      * @param right a {@link java.util.function.Consumer} object.
      */
     public final void accept(Consumer<? super L> left, Consumer<? super R> right) {
@@ -229,7 +226,7 @@ public abstract class Either<L, R> {
      * <p>mapLeft.</p>
      *
      * @param mapper a {@link java.util.function.Function} object.
-     * @param <T> a T object.
+     * @param <T>    a T object.
      * @return a {@link org.mali.fasaha.utils.Either} object.
      */
     @SuppressWarnings("unchecked")
@@ -245,7 +242,7 @@ public abstract class Either<L, R> {
      * <p>mapRight.</p>
      *
      * @param mapper a {@link java.util.function.Function} object.
-     * @param <T> a T object.
+     * @param <T>    a T object.
      * @return a {@link org.mali.fasaha.utils.Either} object.
      */
     @SuppressWarnings("unchecked")
@@ -260,9 +257,9 @@ public abstract class Either<L, R> {
     /**
      * Accepts both the left and right consumers, using the default values to set the empty side.
      *
-     * @param left a {@link java.util.function.Consumer} object.
-     * @param right a {@link java.util.function.Consumer} object.
-     * @param defaultLeft a L object.
+     * @param left         a {@link java.util.function.Consumer} object.
+     * @param right        a {@link java.util.function.Consumer} object.
+     * @param defaultLeft  a L object.
      * @param defaultRight a R object.
      */
     public final void acceptBoth(Consumer<? super L> left, Consumer<? super R> right, L defaultLeft, R defaultRight) {

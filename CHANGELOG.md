@@ -4,6 +4,16 @@ Changelog for arka implementation by mali-fasaha
 ## Unreleased
 ### No issue
 
+**Added usage documentation for the Either class**
+
+
+[126b123f39560b2](https://github.com/mali-fasaha/arka/commit/126b123f39560b2) ghacupha *2018-07-23 18:39:52*
+
+**Added COnverter test for #convertAll method**
+
+
+[e0bc857b00039a6](https://github.com/mali-fasaha/arka/commit/e0bc857b00039a6) ghacupha *2018-07-23 16:54:45*
+
 **Added COnverter test for #convertAll method**
 
 
