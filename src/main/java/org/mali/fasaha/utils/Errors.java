@@ -28,7 +28,7 @@ import java.util.function.Supplier;
 
 /**
  * Executes code and wraps functions, sending any errors to a {@code Consumer<Throwable>} error handler, see <a
- * href="https://github.com/diffplug/durian/blob/master/test/com/diffplug/common/base/ErrorsExample.java">ErrorsExample</a>.
+ * href="https://github.com/mali-fasaha/arka/blob/master/src/test/java/org/mali/fasaha/utils/ErrorsExample.java">ErrorsExample</a>.
  *
  * @author edwin_njeru
  * @version $Id: $Id
@@ -66,6 +66,7 @@ public abstract class Errors implements Consumer<Throwable> {
      * @return a {@link org.mali.fasaha.utils.Errors.Handling} object.
      */
     public static Handling createHandling(Consumer<Throwable> handler) {
+
         return new Handling(handler);
     }
 
@@ -112,9 +113,7 @@ public abstract class Errors implements Consumer<Throwable> {
      * <br>
      * By default, log() calls {@code Throwable.printStackTrace()}.
      * To modify this behavior in your application, call
-     * {@code
-     *  Plugins.set(Errors.Plugins.Log.class, error -> myCustomLog(error));
-     *  }
+     * {@code Plugins.set(Errors.Plugins.Log.class, error -> myCustomLog(error));}
      *
      * @see org.mali.fasaha.utils.Plugins
      * @see Plugins.OnErrorThrowAssertion
@@ -309,9 +308,11 @@ public abstract class Errors implements Consumer<Throwable> {
     /**
      * An {@link Errors} which is free to rethrow the exception, but it might not.
      * <p>
-     * If we want to wrap a method with a return value, since the handler might not throw an exception, we need a default value to return.
+     * If we want to wrap a method with a return value, since the handler might not
+     * throw an exception, we need a default value to return.
      */
     public static class Handling extends Errors {
+
         protected Handling(Consumer<Throwable> error) {
             super(error);
         }
