@@ -170,7 +170,7 @@ public interface Converter<A, B> {
     }
 
     /**
-     * Creates {@link Converter<A,C>} from {@link Converter<A, B>} and {@link Converter<B, C>}
+     * Creates {@code Converter<A,C>} from {@code Converter<A, B>} and {@code Converter<B, C>}
      *
      * @param <A> Parameter Type A
      * @param <B> Parameter Type B
@@ -262,7 +262,7 @@ public interface Converter<A, B> {
 
         /**
          * Returns the reverse of the Converter
-         * @return Converter<B, A>
+         * @return {@code Converter<B, A>}
          */
         @Override
         public Converter<B, A> reverse() {
