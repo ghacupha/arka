@@ -7,6 +7,11 @@ Changelog for arka implementation by mali-fasaha
 **Added documentation for Errors class**
 
 
+[d6e35e8d50de52f](https://github.com/mali-fasaha/arka/commit/d6e35e8d50de52f) ghacupha *2018-07-23 19:33:09*
+
+**Added documentation for Errors class**
+
+
 [54ab34b64cb8d8e](https://github.com/mali-fasaha/arka/commit/54ab34b64cb8d8e) ghacupha *2018-07-23 19:30:56*
 
 **Added documentation for the Either class**

@@ -38,6 +38,7 @@ import java.util.function.Supplier;
  */
 @GwtCompatible(emulated = true)
 public class SuppliersTest extends TestCase {
+
 	public void testCompose() {
 		Supplier<Integer> fiveSupplier = new Supplier<Integer>() {
 			@Override
@@ -60,6 +61,7 @@ public class SuppliersTest extends TestCase {
 	}
 
 	public void testComposeWithLists() {
+
 		Supplier<ArrayList<Integer>> listSupplier = new Supplier<ArrayList<Integer>>() {
 			@Override
 			public ArrayList<Integer> get() {

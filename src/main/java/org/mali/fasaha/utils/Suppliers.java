@@ -26,23 +26,29 @@ import java.util.function.Supplier;
 /**
  * Helper functions for manipulating {@link java.util.function.Supplier}, copied from Guava.
  * <p>
- * The function signatures below are identical to Google's Guava 18.0, except that guava's functional interfaces have been swapped with Java 8's. It is tested against the same test suite as Google
- * Guava to ensure functional compatibility.
+ * The function signatures below are identical to Google's Guava 18.0, except that guava's
+ * functional interfaces have been swapped with Java 8's. It is tested against the same test suite
+ * as Google Guava to ensure functional compatibility.
  * <p>
- * Most of the implementation has been replaced with lambdas, which means that the following functionality has been removed: equals(), hashCode(), toString(), GWT, and serialization.
+ * Most of the implementation has been replaced with lambdas, which means that the following
+ * functionality has been removed: equals(), hashCode(), toString(), GWT, and serialization.
  * <p>
- * Lambdas don't support these methods, and there isn't much reason why they should, so we removed them in Durian.
+ * Lambdas don't support these methods, and there isn't much reason why they should, so we
+ * removed them.
  *
  * @author edwin_njeru
  * @version $Id: $Id
  */
 public final class Suppliers {
+    
     private Suppliers() {
     }
 
     /**
-     * Returns a new supplier which is the composition of the provided function and supplier. In other words, the new supplier's value will be computed by retrieving the value from {@code supplier},
-     * and then applying {@code function} to that value. Note that the resulting supplier will not call {@code supplier} or invoke {@code function} until it is called.
+     * Returns a new supplier which is the composition of the provided function and supplier.
+     * In other words, the new supplier's value will be computed by retrieving the value from
+     * {@code supplier}, and then applying {@code function} to that value. Note that the
+     * resulting supplier will not call {@code supplier} or invoke {@code function} until it is called.
      *
      * @param function a {@link java.util.function.Function} object.
      * @param supplier a {@link java.util.function.Supplier} object.
@@ -55,8 +61,9 @@ public final class Suppliers {
     }
 
     /**
-     * Returns a supplier which caches the instance retrieved during the first call to {@code get()} and returns that value on subsequent calls to {@code get()}. See:
-     * <a href="http://en.wikipedia.org/wiki/Memoization">memoization</a>
+     * Returns a supplier which caches the instance retrieved during the first call to
+     * {@code get()} and returns that value on subsequent calls to {@code get()}.
+     * <p> See <a href="http://en.wikipedia.org/wiki/Memoization">memoization</a>
      *
      * <p>The returned supplier is thread-safe.
      *
@@ -72,13 +79,17 @@ public final class Suppliers {
     }
 
     /**
-     * Returns a supplier that caches the instance supplied by the delegate and removes the cached value after the specified time has passed. Subsequent calls to {@code get()} return the cached value
-     * if the expiration time has not passed. After the expiration time, a new value is retrieved, cached, and returned. See:
+     * Returns a supplier that caches the instance supplied by the delegate and removes
+     * the cached value after the specified time has passed. Subsequent calls to {@code get()}
+     * return the cached value
+     * if the expiration time has not passed. After the expiration time, a new value is retrieved,
+     * cached, and returned. See:
      * <a href="http://en.wikipedia.org/wiki/Memoization">memoization</a>
      *
      * <p>The returned supplier is thread-safe.
      *
-     * @param duration the length of time after a value is created that it should stop being returned by subsequent {@code get()} calls
+     * @param duration the length of time after a value is created that it should stop being
+     *                 returned by subsequent {@code get()} calls
      * @param unit     the unit that {@code duration} is expressed in
      * @throws java.lang.IllegalArgumentException if {@code duration} is not positive
      * @since 2.0
@@ -102,7 +113,8 @@ public final class Suppliers {
     }
 
     /**
-     * Returns a supplier whose {@code get()} method synchronizes on {@code delegate} before calling it, making it thread-safe.
+     * Returns a supplier whose {@code get()} method synchronizes on {@code delegate} before
+     * calling it, making it thread-safe.
      *
      * @param delegate a {@link java.util.function.Supplier} object.
      * @return a {@link java.util.function.Supplier} object.
@@ -113,7 +125,8 @@ public final class Suppliers {
     }
 
     /**
-     * Returns a function that accepts a supplier and returns the result of invoking {@link java.util.function.Supplier#get} on that supplier.
+     * Returns a function that accepts a supplier and returns the result of invoking
+     * {@link java.util.function.Supplier#get} on that supplier.
      *
      * @since 8.0
      * @param <T> a T object.
@@ -158,6 +171,7 @@ public final class Suppliers {
     }
 
     static class ExpiringMemoizingSupplier<T> implements Supplier<T> {
+
         final Supplier<T> delegate;
         final long durationNanos;
         volatile T value;
@@ -207,6 +221,7 @@ public final class Suppliers {
     }
 
     private static class ThreadSafeSupplier<T> implements Supplier<T> {
+
         final Supplier<T> delegate;
 
         ThreadSafeSupplier(Supplier<T> delegate) {
