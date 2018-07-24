@@ -41,6 +41,5 @@ public class MoreCollectorsTest {
 	public void testCodePointsToString() {
 		String spacesRemoved = MoreCollectors.codePointsToString("a b c".codePoints().filter(c -> c != ' '));
 		Assert.assertEquals("abc", spacesRemoved);
-		;
 	}
 }

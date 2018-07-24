@@ -40,7 +40,7 @@ import java.util.function.Supplier;
  * @version $Id: $Id
  */
 public final class Suppliers {
-    
+
     private Suppliers() {
     }
 

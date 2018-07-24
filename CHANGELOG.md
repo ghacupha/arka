@@ -4,6 +4,11 @@ Changelog for arka implementation by mali-fasaha
 ## Unreleased
 ### No issue
 
+**Updated Suppliers documentation**
+
+
+[0eae8c65c220747](https://github.com/mali-fasaha/arka/commit/0eae8c65c220747) ghacupha *2018-07-24 07:42:49*
+
 **Added documentation for Errors class**
 
 

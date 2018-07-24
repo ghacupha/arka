@@ -25,7 +25,8 @@ import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 /**
- * Utilities for obtaining the fields and getter methods of an object using reflection. Useful for first-pass debugging of runtime objects.
+ * Utilities for obtaining the fields and getter methods of an object using reflection. Useful for
+ * first-pass debugging of runtime objects.
  *
  * @author edwin_njeru
  * @version $Id: $Id

@@ -24,9 +24,11 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
- * Utility methods for dumping the stack - arbitrarily or at specific trigger points (such as when a certain string prints to console).
+ * Utility methods for dumping the stack - arbitrarily or at specific trigger points
+ * (such as when a certain string prints to console).
  * <p>
- * If someone is printing "junk" to the console and you can't figure out why, try {@code StackDumper.dumpWhenSysOutContains("junk")}.
+ * If someone is printing "junk" to the console and you can't figure out why,
+ * try {@code StackDumper.dumpWhenSysOutContains("junk")}.
  *
  * @author edwin_njeru
  * @version $Id: $Id

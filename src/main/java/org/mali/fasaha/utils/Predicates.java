@@ -28,12 +28,15 @@ import java.util.regex.Pattern;
 /**
  * Helper functions for manipulating {@link java.util.function.Predicate}, copied from Guava.
  * <p>
- * The function signatures below are identical to Google's Guava 18.0, except that guava's functional interfaces have been swapped with Java 8's. It is tested against the same test suite as Google
- * Guava to ensure functional compatibility.
+ * The function signatures below are identical to Google's Guava 18.0, except that guava's
+ * functional interfaces have been swapped with Java 8's. It is tested against the same test
+ * suite as Google Guava to ensure functional compatibility.
  * <p>
- * Most of the implementation has been replaced with lambdas, which means that the following functionality has been removed: equals(), hashCode(), toString(), GWT, and serialization.
+ * Most of the implementation has been replaced with lambdas, which means that the following
+ * functionality has been removed: equals(), hashCode(), toString(), GWT, and serialization.
  * <p>
- * Lambdas don't support these methods, and there isn't much reason why they should, so we removed them in Durian.
+ * Lambdas don't support these methods, and there isn't much reason why they should, so we
+ * removed them.
  *
  * @author edwin_njeru
  * @version $Id: $Id
@@ -83,7 +86,8 @@ public final class Predicates {
     }
 
     /**
-     * Returns a predicate that evaluates to {@code true} if the given predicate evaluates to {@code false}.
+     * Returns a predicate that evaluates to {@code true} if the given predicate evaluates to
+     * {@code false}.
      *
      * @param predicate a {@link java.util.function.Predicate} object.
      * @return a {@link java.util.function.Predicate} object.
@@ -94,9 +98,13 @@ public final class Predicates {
     }
 
     /**
-     * Returns a predicate that evaluates to {@code true} if each of its components evaluates to {@code true}. The components are evaluated in order, and evaluation will be "short-circuited" as soon
-     * as a false predicate is found. It defensively copies the iterable passed in, so future changes to it won't alter the behavior of this predicate. If {@code components} is empty, the returned
-     * predicate will always evaluate to {@code true}.
+     * Returns a predicate that evaluates to {@code true} if each of its
+     * components evaluates to {@code true}. The components are evaluated in
+     * order, and evaluation will be "short-circuited" as soon as a false
+     * predicate is found. It defensively copies the iterable passed in, so future
+     * changes to it won't alter the behavior of this predicate. If {@code
+     * components} is empty, the returned predicate will always evaluate to {@code
+     * true}.
      *
      * @param components a {@link java.lang.Iterable} object.
      * @return a {@link java.util.function.Predicate} object.
@@ -107,9 +115,11 @@ public final class Predicates {
     }
 
     /**
-     * Returns a predicate that evaluates to {@code true} if each of its components evaluates to {@code true}. The components are evaluated in order, and evaluation will be "short-circuited" as soon
-     * as a false predicate is found. It defensively copies the array passed in, so future changes to it won't alter the behavior of this predicate. If {@code components} is empty, the returned
-     * predicate will always evaluate to {@code true}.
+     * Returns a predicate that evaluates to {@code true} if each of its components evaluates to
+     * {@code true}. The components are evaluated in order, and evaluation will be "short-circuited"
+     * as soon as a false predicate is found. It defensively copies the array passed in, so
+     * future changes to it won't alter the behavior of this predicate. If {@code components} is empty,
+     * the returned predicate will always evaluate to {@code true}.
      *
      * @param components a {@link java.util.function.Predicate} object.
      * @return a {@link java.util.function.Predicate} object.
@@ -121,8 +131,9 @@ public final class Predicates {
     }
 
     /**
-     * Returns a predicate that evaluates to {@code true} if both of its components evaluate to {@code true}. The components are evaluated in order, and evaluation will be "short-circuited" as soon as
-     * a false predicate is found.
+     * Returns a predicate that evaluates to {@code true} if both of its components evaluate to
+     * {@code true}. The components are evaluated in order, and evaluation will be "short-circuited"
+     * as soon as a false predicate is found.
      *
      * @param first a {@link java.util.function.Predicate} object.
      * @param second a {@link java.util.function.Predicate} object.
@@ -134,9 +145,11 @@ public final class Predicates {
     }
 
     /**
-     * Returns a predicate that evaluates to {@code true} if any one of its components evaluates to {@code true}. The components are evaluated in order, and evaluation will be "short-circuited" as
-     * soon as a true predicate is found. It defensively copies the iterable passed in, so future changes to it won't alter the behavior of this predicate. If {@code components} is empty, the returned
-     * predicate will always evaluate to {@code false}.
+     * Returns a predicate that evaluates to {@code true} if any one of its components evaluates to
+     * {@code true}. The components are evaluated in order, and evaluation will be "short-circuited" as
+     * soon as a true predicate is found. It defensively copies the iterable passed in, so future
+     * changes to it won't alter the behavior of this predicate. If {@code components} is empty,
+     * the returned predicate will always evaluate to {@code false}.
      *
      * @param components a {@link java.lang.Iterable} object.
      * @return a {@link java.util.function.Predicate} object.
@@ -161,8 +174,9 @@ public final class Predicates {
     }
 
     /**
-     * Returns a predicate that evaluates to {@code true} if either of its components evaluates to {@code true}. The components are evaluated in order, and evaluation will be "short-circuited" as soon
-     * as a true predicate is found.
+     * Returns a predicate that evaluates to {@code true} if either of its components evaluates to
+     * {@code true}. The components are evaluated in order, and evaluation will be "short-circuited"
+     * as soon as a true predicate is found.
      *
      * @param first a {@link java.util.function.Predicate} object.
      * @param second a {@link java.util.function.Predicate} object.
@@ -174,7 +188,8 @@ public final class Predicates {
     }
 
     /**
-     * Returns a predicate that evaluates to {@code true} if the object being tested {@code equals()} the given target or both are null.
+     * Returns a predicate that evaluates to {@code true} if the object being tested {@code equals()}
+     * the given target or both are null.
      *
      * @param target a T object.
      * @return a {@link java.util.function.Predicate} object.
@@ -185,7 +200,8 @@ public final class Predicates {
     }
 
     /**
-     * Returns a predicate that evaluates to {@code true} if the object being tested is an instance of the given class. If the object being tested is {@code null} this predicate evaluates to {@code
+     * Returns a predicate that evaluates to {@code true} if the object being tested is an instance of
+     * the given class. If the object being tested is {@code null} this predicate evaluates to {@code
      * false}.
      *
      * @param clazz a {@link java.lang.Class} object.
@@ -196,7 +212,8 @@ public final class Predicates {
     }
 
     /**
-     * Returns a predicate that evaluates to {@code true} if the class being tested is assignable from the given class.  The returned predicate does not allow null inputs.
+     * Returns a predicate that evaluates to {@code true} if the class being tested is assignable
+     * from the given class.  The returned predicate does not allow null inputs.
      *
      * @since 10.0
      * @param clazz a {@link java.lang.Class} object.
@@ -207,11 +224,13 @@ public final class Predicates {
     }
 
     /**
-     * Returns a predicate that evaluates to {@code true} if the object reference being tested is a member of the given collection. It does not defensively copy the collection passed in, so future
+     * Returns a predicate that evaluates to {@code true} if the object reference being tested is a
+     * member of the given collection. It does not defensively copy the collection passed in, so future
      * changes to it will alter the behavior of the predicate.
      *
      * <p>This method can technically accept any {@code Collection<?>}, but using
-     * a typed collection helps prevent bugs. This approach doesn't block any potential users since it is always possible to use {@code Predicates.<Object>in()}.
+     * a typed collection helps prevent bugs. This approach doesn't block any potential users
+     * since it is always possible to use {@code Predicates.<Object>in()}.
      *
      * @param target the collection that may contain the function input
      * @param <T> a T object.
@@ -228,7 +247,8 @@ public final class Predicates {
     }
 
     /**
-     * Returns the composition of a function and a predicate. For every {@code x}, the generated predicate returns {@code predicate(function(x))}.
+     * Returns the composition of a function and a predicate. For every {@code x}, the generated
+     * predicate returns {@code predicate(function(x))}.
      *
      * @return the composition of the provided function and predicate
      * @param predicate a {@link java.util.function.Predicate} object.

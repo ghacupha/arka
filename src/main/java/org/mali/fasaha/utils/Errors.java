@@ -27,8 +27,8 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 /**
- * Executes code and wraps functions, sending any errors to a {@code Consumer<Throwable>} error handler, see <a
- * href="https://github.com/mali-fasaha/arka/blob/master/src/test/java/org/mali/fasaha/utils/ErrorsExample.java">ErrorsExample</a>.
+ * Executes code and wraps functions, sending any errors to a {@code Consumer<Throwable>} error handler.
+ * 
  *
  * @author edwin_njeru
  * @version $Id: $Id
