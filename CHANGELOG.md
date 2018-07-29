@@ -7,6 +7,11 @@ Changelog for arka implementation by mali-fasaha
 **Added license info to the converterTest**
 
 
+[8b04641e41f2b61](https://github.com/mali-fasaha/arka/commit/8b04641e41f2b61) ghacupha *2018-07-29 10:04:22*
+
+**Added license info to the converterTest**
+
+
 [373f84c60b06769](https://github.com/mali-fasaha/arka/commit/373f84c60b06769) ghacupha *2018-07-29 10:02:51*
 
 **Prepare snapshot release**
