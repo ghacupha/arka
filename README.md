@@ -11,7 +11,7 @@ output = [
 	link(shield('Live chat', 'gitter', 'live chat', 'brightgreen'), 'https://gitter.im/mali-fasaha/arka')
 	].join('\n');
 -->
-[![Latest version](https://img.shields.io/badge/latest-3.4.0-blue.svg)](https://github.com/diffplug/durian/releases/latest)
+[![](https://jitpack.io/v/mali-fasaha/arka.svg)](https://jitpack.io/#mali-fasaha/arka)
 [![Javadoc](https://img.shields.io/badge/javadoc-OK-blue.svg)](https://diffplug.github.io/durian/javadoc/3.4.0/)
 [![License Apache](https://img.shields.io/badge/license-Apache-blue.svg)](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0))
 
