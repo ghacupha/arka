@@ -54,6 +54,30 @@ Arka's only requirement is Java 8 or greater, no other libraries are needed (not
 
 Contributions are welcome, see [the contributing guide](CONTRIBUTING.md) for development info.
 
+## Installation
+For now the library can be obtained by installing from a jitpack repository
+
+Add this repository:
+
+```xml
+ <repositories>
+   <repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+   </repository>
+ </repositories>
+```
+
+The dependency can then be pulled as shown:
+
+```xml
+  <dependency>
+    <groupId>com.github.mali-fasaha</groupId>
+    <artifactId>arka</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </dependency>
+```
+
 ## Related
 
 If you have a `Box`, but you'd like to subscribe to changes in its value, you should look at `RxBox` in [DurianRx](https://github.com/diffplug/durian-rx).
