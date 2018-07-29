@@ -23,7 +23,7 @@
 
     <groupId>org.mali.fasaha</groupId>
     <artifactId>arka</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <name>arka</name>
     <description>Common utilities used in mali fasaha</description>
