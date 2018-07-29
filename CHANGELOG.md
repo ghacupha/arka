@@ -4,6 +4,16 @@ Changelog for arka implementation by mali-fasaha
 ## Unreleased
 ### No issue
 
+**Prepare snapshot release**
+
+
+[361c26ab1395e89](https://github.com/mali-fasaha/arka/commit/361c26ab1395e89) ghacupha *2018-07-29 09:52:56*
+
+**reviewed Predicates documentation**
+
+
+[0a2bb88f9bf2eef](https://github.com/mali-fasaha/arka/commit/0a2bb88f9bf2eef) ghacupha *2018-07-24 15:23:09*
+
 **Updated Suppliers documentation**
 
 
