@@ -244,6 +244,11 @@ public abstract class Errors implements Consumer<Throwable> {
 
     /**
      * Returns a IntConsumer whose exceptions are handled by this Errors.
+     * Most notable use cases may involve scenarios where we are not really interested in
+     * the underlying data structure for its values, rather the underlying data structure
+     * which is composed of integers is used for ordering purposes. This might replace
+     * the declarative for-loop with a functional call to the {@link java.util.stream.IntStream}
+     * abstraction with range.
      *
      * @param consumer a {@link org.mali.fasaha.utils.Throwing.Consumer} object.
      * @return a {@link java.util.function.IntConsumer} object.

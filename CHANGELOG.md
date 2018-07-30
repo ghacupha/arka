@@ -4,6 +4,16 @@ Changelog for arka implementation by mali-fasaha
 ## Unreleased
 ### No issue
 
+**Created #wrapIntConsumer to create disambiguation from the #wrap method which actually consumes a the underlying collction, while the former simply uses integers for ordering like a for loop**
+
+
+[ecb4df959bb03b2](https://github.com/mali-fasaha/arka/commit/ecb4df959bb03b2) Edwin Njeru *2018-07-30 11:02:08*
+
+**Amended return type for wrap on IntConsumer to java.util.function.IntConsumer**
+
+
+[288e804e7b502ca](https://github.com/mali-fasaha/arka/commit/288e804e7b502ca) Edwin Njeru *2018-07-30 10:27:50*
+
 **Amended return type for wrap on IntConsumer to java.util.function.IntConsumer**
 
 
