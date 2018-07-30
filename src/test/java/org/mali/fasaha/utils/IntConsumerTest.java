@@ -16,8 +16,12 @@
 package org.mali.fasaha.utils;
 
 import org.junit.Test;
+import org.mali.fasaha.utils.Throwing.Specific.IntConsumer;
+
+import java.util.stream.IntStream;
 
 import static org.junit.Assert.*;
+import static org.mali.fasaha.utils.Errors.suppress;
 
 public class IntConsumerTest {
 
@@ -47,7 +51,16 @@ public class IntConsumerTest {
 
         /*Errors.suppress().wrap(calc.accept(80));*/
 
-        Errors.suppress().wrap(() -> calc.accept(80));
+        suppress().wrap(() -> calc.accept(80));
 
+    }
+
+    @Test
+    public void wrapIntConsumerTest() throws Exception {
+        Throwing.IntConsumer consumer = i -> i++;
+
+        int b = 20;
+
+        IntStream.range(0,100).forEach(suppress().wrapIntConsumer(consumer));
     }
 }
