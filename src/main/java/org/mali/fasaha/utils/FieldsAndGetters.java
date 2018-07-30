@@ -55,8 +55,7 @@ public class FieldsAndGetters {
      */
     public static Stream<Map.Entry<Field, Object>> fields(Object obj, Predicate<Field> predicate) {
         Class<?> clazz = obj == null ? ObjectIsNull.class : obj.getClass();
-        return Arrays.asList(clazz.getFields())
-                     .stream()
+        return Arrays.stream(clazz.getFields())
                      // gotta be public
                      .filter(field -> Modifier.isPublic(field.getModifiers()))
                      // gotta be an instance field
