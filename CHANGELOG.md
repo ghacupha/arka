@@ -4,6 +4,11 @@ Changelog for arka implementation by mali-fasaha
 ## Unreleased
 ### No issue
 
+**Created cast for IntConsumer**
+
+
+[cf75fdbd710d45c](https://github.com/mali-fasaha/arka/commit/cf75fdbd710d45c) Edwin Njeru *2018-07-30 09:35:56*
+
 **Implemented IntConsumerTest**
 
 

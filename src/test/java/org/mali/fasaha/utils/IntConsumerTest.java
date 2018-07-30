@@ -53,6 +53,8 @@ public class IntConsumerTest {
             assertEquals(0.0125, y, 0.0000);
         };
 
+        /*Errors.suppress().wrap(calc.accept(80));*/
+
         Errors.suppress().wrap(() -> calc.accept(80));
 
     }

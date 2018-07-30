@@ -16,6 +16,7 @@
 package org.mali.fasaha.utils;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import org.mali.fasaha.utils.Throwing.Specific.IntConsumer;
 
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -248,10 +249,10 @@ public abstract class Errors implements Consumer<Throwable> {
      * @return a {@link java.util.function.Consumer} object.
      * @param <T> a T object.
      */
-    public <T> Consumer<T> wrap(Throwing.IntConsumer consumer) {
+    public java.util.function.IntConsumer wrap(Throwing.IntConsumer consumer) {
         return val -> {
             try {
-                consumer.accept((Integer) val);
+                consumer.accept(val);
             } catch (Throwable e) {
                 handler.accept(e);
             }
