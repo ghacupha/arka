@@ -4,6 +4,25 @@ Changelog for arka implementation by mali-fasaha
 ## Unreleased
 ### No issue
 
+**Updated library to version 1.0.0**
+
+
+[8a3611288cc5233](https://github.com/mali-fasaha/arka/commit/8a3611288cc5233) ghacupha *2018-07-29 11:47:11*
+
+**Update readme installation guidance**
+
+
+[69cfca7925a1658](https://github.com/mali-fasaha/arka/commit/69cfca7925a1658) ghacupha *2018-07-29 11:28:23*
+
+**Removed unnecessary cycles from travis**
+
+
+[244df830a43aa02](https://github.com/mali-fasaha/arka/commit/244df830a43aa02) ghacupha *2018-07-29 10:43:15*
+
+
+## 1.0-SNAPSHOT
+### No issue
+
 **Added license info to the converterTest**
 
 
