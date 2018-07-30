@@ -102,11 +102,6 @@ public interface Throwing {
          * It's typical like any other consumer except that it operates with native un-boxed integers
          * and can be typed by {@link Throwable}
          *
-         * <p>This is a <a href="package-summary.html">functional interface</a>
-         * whose functional method is {@link #accept(int)}.
-         *
-         * @see java.util.function.Consumer
-         * @since 1.8
          */
         @FunctionalInterface
         public interface IntConsumer<E extends Throwable> {
@@ -193,6 +188,10 @@ public interface Throwing {
 
     @FunctionalInterface
     public interface Consumer<T> extends Specific.Consumer<T, Throwable> {
+    }
+
+    @FunctionalInterface
+    public interface IntConsumer<T> extends Specific.IntConsumer<Throwable> {
     }
 
     @FunctionalInterface

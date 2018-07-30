@@ -4,6 +4,11 @@ Changelog for arka implementation by mali-fasaha
 ## Unreleased
 ### No issue
 
+**Created the IntConsumer interface inside Throwing**
+
+
+[d90636c5bfe0dec](https://github.com/mali-fasaha/arka/commit/d90636c5bfe0dec) Edwin Njeru *2018-07-30 07:56:06*
+
 **Updated library to version 1.0.0**
 
 
