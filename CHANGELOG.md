@@ -4,6 +4,11 @@ Changelog for arka implementation by mali-fasaha
 ## Unreleased
 ### No issue
 
+**Added the IntConsumer under the scope of Throwing overriding the definition in the specific scope**
+
+
+[2433727d7665ca2](https://github.com/mali-fasaha/arka/commit/2433727d7665ca2) Edwin Njeru *2018-07-30 08:10:58*
+
 **Created the IntConsumer interface inside Throwing**
 
 

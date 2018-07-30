@@ -191,7 +191,7 @@ public interface Throwing {
     }
 
     @FunctionalInterface
-    public interface IntConsumer<T> extends Specific.IntConsumer<Throwable> {
+    public interface IntConsumer extends Specific.IntConsumer<Throwable> {
     }
 
     @FunctionalInterface
