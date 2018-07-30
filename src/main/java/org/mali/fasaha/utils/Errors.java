@@ -15,9 +15,6 @@
  */
 package org.mali.fasaha.utils;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-import org.mali.fasaha.utils.Throwing.Specific.IntConsumer;
-
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import java.io.PrintWriter;
@@ -120,7 +117,6 @@ public abstract class Errors implements Consumer<Throwable> {
      * @see Plugins.OnErrorThrowAssertion
      * @return a {@link org.mali.fasaha.utils.Errors.Handling} object.
      */
-    @SuppressFBWarnings(value = "LI_LAZY_INIT_STATIC", justification = "This race condition is fine, as explained in the comment below.")
     public static Handling log() {
         if (log == null) {
 
@@ -154,7 +150,6 @@ public abstract class Errors implements Consumer<Throwable> {
      * @see Plugins.OnErrorThrowAssertion
      * @return a {@link org.mali.fasaha.utils.Errors.Handling} object.
      */
-    @SuppressFBWarnings(value = "LI_LAZY_INIT_STATIC", justification = "This race condition is fine, as explained in the comment below.")
     public static Handling dialog() {
         if (dialog == null) {
             // There is an acceptable race condition here.  See Errors.log() for details.

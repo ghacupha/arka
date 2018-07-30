@@ -362,11 +362,11 @@
             <version>${guava-version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.google.code.findbugs/annotations -->
-        <dependency>
+        <!--<dependency>
             <groupId>com.google.code.findbugs</groupId>
             <artifactId>annotations</artifactId>
             <version>${google-findbugs-annotations}</version>
-        </dependency>
+        </dependency>-->
         <!-- https://mvnrepository.com/artifact/com.github.stephenc.findbugs/findbugs-annotations -->
         <!--<dependency>
             <groupId>com.github.stephenc.findbugs</groupId>
@@ -387,7 +387,6 @@
             <version>${guava-testlib-version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
 

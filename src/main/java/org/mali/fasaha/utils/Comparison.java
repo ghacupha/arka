@@ -15,8 +15,6 @@
  */
 package org.mali.fasaha.utils;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-
 import java.util.Comparator;
 
 /**
@@ -58,7 +56,6 @@ public enum Comparison {
      * @param compareToResult a int.
      * @return a {@link org.mali.fasaha.utils.Comparison} object.
      */
-    @SuppressFBWarnings(value = "UC_USELESS_CONDITION", justification = "Throwing Unhandled keeps the full-enumeration more explicit.")
     public static Comparison from(int compareToResult) {
         if (compareToResult == 0) {
             return Comparison.EQUAL;

@@ -15,8 +15,6 @@
  */
 package org.mali.fasaha.utils;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-
 import javax.annotation.Nullable;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
@@ -136,7 +134,6 @@ public final class Suppliers {
         return Supplier::get;
     }
 
-    @SuppressFBWarnings(value = "IS2_INCONSISTENT_SYNC", justification = "It's a lightweight mechanism which ensures that delegate only gets called once.")
     static class MemoizingSupplier<T> implements Supplier<T> {
         final Supplier<T> delegate;
         volatile boolean initialized;
