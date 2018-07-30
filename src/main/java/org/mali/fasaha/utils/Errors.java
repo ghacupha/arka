@@ -247,7 +247,6 @@ public abstract class Errors implements Consumer<Throwable> {
      *
      * @param consumer a {@link org.mali.fasaha.utils.Throwing.Consumer} object.
      * @return a {@link java.util.function.Consumer} object.
-     * @param <T> a T object.
      */
     public java.util.function.IntConsumer wrap(Throwing.IntConsumer consumer) {
         return val -> {
