@@ -36,6 +36,7 @@ import java.util.function.Predicate;
 import java.util.regex.Pattern;
 
 import static com.google.common.base.CharMatcher.WHITESPACE;
+import static com.google.common.base.CharMatcher.whitespace;
 import static com.google.common.collect.Lists.newArrayList;
 
 /**
@@ -475,7 +476,7 @@ public class PredicatesTest extends TestCase {
 
 		@Override
 		public String apply(String string) {
-			return WHITESPACE.trimFrom(string);
+			return whitespace().trimFrom(string);
 		}
 	}
 
