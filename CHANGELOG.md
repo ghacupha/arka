@@ -4,6 +4,26 @@ Changelog for arka implementation by mali-fasaha
 ## Unreleased
 ### No issue
 
+**Removed unnecessary call to asList in FieldsAndGetters**
+
+
+[a7a661250346b38](https://github.com/mali-fasaha/arka/commit/a7a661250346b38) Edwin Njeru *2018-07-30 14:25:06*
+
+**Removed findBugs annotations whose modules crash with jsr305**
+
+
+[02b56f3ce374454](https://github.com/mali-fasaha/arka/commit/02b56f3ce374454) Edwin Njeru *2018-07-30 14:21:07*
+
+**Added module-info**
+
+
+[e4d35099b377275](https://github.com/mali-fasaha/arka/commit/e4d35099b377275) Edwin Njeru *2018-07-30 14:10:00*
+
+**Removed type inference errors in Predicates**
+
+
+[fdbfdea53b59263](https://github.com/mali-fasaha/arka/commit/fdbfdea53b59263) Edwin Njeru *2018-07-30 13:37:36*
+
 **Created #wrapIntConsumer to create disambiguation from the #wrap method which actually consumes a the underlying collction, while the former simply uses integers for ordering like a for loop**
 
 

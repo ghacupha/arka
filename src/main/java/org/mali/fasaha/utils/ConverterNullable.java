@@ -15,7 +15,6 @@
  */
 package org.mali.fasaha.utils;
 
-import javax.annotation.Nullable;
 import java.util.function.Function;
 
 /**
@@ -73,8 +72,7 @@ public interface ConverterNullable<A, B> {
      * @param a the instance to convert; possibly null
      * @return the converted instance; possibly null
      */
-    @Nullable
-    B convert(@Nullable A a);
+    B convert(A a);
 
     /**
      * Returns a representation of {@code b} as an instance of type {@code A}. If {@code b} cannot be converted, an unchecked exception (such as {@link java.lang.IllegalArgumentException}) should be thrown.
@@ -85,8 +83,7 @@ public interface ConverterNullable<A, B> {
      *                                       (for example, consider a {@code Converter<Chicken, ChickenNugget>}), then this is not logically a {@code Converter} at all, and should just implement
      *                                       {@link java.util.function.Function}.
      */
-    @Nullable
-    A revert(@Nullable B b);
+    A revert(B b);
 
     /**
      * Returns a converter whose {@code convert} method applies {@code secondConverter} to the result of this converter. Its {@code reverse} method applies the converters in reverse order.

@@ -15,7 +15,6 @@
  */
 package org.mali.fasaha.utils;
 
-import javax.annotation.Nullable;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
@@ -106,7 +105,7 @@ public final class Suppliers {
      * @return a {@link java.util.function.Supplier} object.
      * @param <T> a T object.
      */
-    public static <T> Supplier<T> ofInstance(@Nullable T instance) {
+    public static <T> Supplier<T> ofInstance(T instance) {
         return () -> instance;
     }
 

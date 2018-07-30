@@ -15,7 +15,6 @@
  */
 package org.mali.fasaha.utils;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -195,7 +194,7 @@ public final class Predicates {
      * @return a {@link java.util.function.Predicate} object.
      * @param <T> a T object.
      */
-    public static <T> Predicate<T> equalTo(@Nullable T target) {
+    public static <T> Predicate<T> equalTo(T target) {
         return target == null ? isNull() : t -> Objects.equals(t, target);
     }
 
@@ -314,7 +313,7 @@ public final class Predicates {
         }
 
         @Override
-        public boolean test(@Nullable T t) {
+        public boolean test(T t) {
             // Avoid using the Iterator to avoid generating garbage (issue 820).
             for (int i = 0; i < components.size(); i++) {
                 if (!components.get(i)
@@ -337,7 +336,7 @@ public final class Predicates {
         }
 
         @Override
-        public boolean test(@Nullable T t) {
+        public boolean test(T t) {
             // Avoid using the Iterator to avoid generating garbage (issue 820).
             for (int i = 0; i < components.size(); i++) {
                 if (components.get(i)

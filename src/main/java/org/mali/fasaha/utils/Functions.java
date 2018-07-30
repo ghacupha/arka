@@ -15,7 +15,6 @@
  */
 package org.mali.fasaha.utils;
 
-import javax.annotation.Nullable;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -81,7 +80,7 @@ public final class Functions {
      * @param <K> a K object.
      * @param <V> a V object.
      */
-    public static <K, V> Function<K, V> forMap(Map<K, ? extends V> map, @Nullable V defaultValue) {
+    public static <K, V> Function<K, V> forMap(Map<K, ? extends V> map, V defaultValue) {
         return key -> map.containsKey(key) ? map.get(key) : defaultValue;
     }
 
@@ -121,7 +120,7 @@ public final class Functions {
      * @return a function that always returns {@code value}
      * @param <E> a E object.
      */
-    public static <E> Function<Object, E> constant(@Nullable E value) {
+    public static <E> Function<Object, E> constant(E value) {
         return input -> value;
     }
 

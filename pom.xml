@@ -23,7 +23,7 @@
 
     <groupId>org.mali.fasaha</groupId>
     <artifactId>arka</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <name>arka</name>
     <description>Common utilities used in mali fasaha</description>
@@ -41,8 +41,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!--Runtime Environment-->
-        <java-source-version>8</java-source-version>
-        <java-target-version>8</java-target-version>
+        <java-source-version>10</java-source-version>
+        <java-target-version>10</java-target-version>
+        <java-release-version>10</java-release-version>
         <maven-enforcer-required-maven-version>3.2.5</maven-enforcer-required-maven-version>
         <!--Dependecies versions-->
         <junit-version>4.12</junit-version>
@@ -86,10 +87,15 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin-version}</version>
+                <version>3.8.0</version>
                 <configuration>
-                    <source>9</source>
-                    <target>9</target>
+                    <compilerArgs>
+                        <arg>-verbose</arg>
+                        <arg>-Xlint:all,-options,-path</arg>
+                    </compilerArgs>
+                    <!--<release>${java-release-version}</release>-->
+                    <source>${java-source-version}</source>
+                    <target>${java-target-version}</target>
                 </configuration>
             </plugin>
             <!-- Print the change log as release notes...-->
@@ -217,47 +223,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- Setup spotbugs dependency, would normally only be in reporting section -->
-            <plugin>
-                <groupId>com.github.spotbugs</groupId>
-                <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>${spotbugs-maven-plugin-version}</version>
-                <executions>
-                    <execution>
-                        <id>spotbugs</id>
-                        <goals><goal>spotbugs</goal></goals>
-                        <phase>compile</phase>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.github.spotbugs</groupId>
-                        <artifactId>spotbugs</artifactId>
-                        <version>3.1.0</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-            <!-- Setup JaCoCo code coverage -->
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${jacoco-maven-plugin-version}</version>
-                <executions>
-                    <execution>
-                        <id>jacoco-initialize</id>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>jacoco-site</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
 
             <!-- Setup scaffolding mycila license maven plugin-->
             <!--Use with mvn "mvn license:check", "mvn license:format" & "mvn license:remove"-->
@@ -295,22 +260,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-            <!-- Setup codehaus mojo license management plugin-->
-            <!-- Invocation by 'mvn package'-->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>license-maven-plugin</artifactId>
-                <version>${codehaus-license-maven-plugin-version}</version>
-                <executions>
-                    <execution>
-                        <id>download-licenses</id>
-                        <goals>
-                            <goal>download-licenses</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 
@@ -332,8 +281,6 @@
                         <additionalOption>-Xdoclint:all</additionalOption>
                         <additionalOption>-Xdoclint:-missing</additionalOption>
                     </additionalOptions>
-                    <additionalparam>-Xdoclint:all -Xdoclint:-missing</additionalparam>
-                    <aggregate>false</aggregate>
                 </configuration>
                 <reportSets>
                     <reportSet>
@@ -361,19 +308,6 @@
             <artifactId>guava</artifactId>
             <version>${guava-version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.google.code.findbugs/annotations -->
-        <!--<dependency>
-            <groupId>com.google.code.findbugs</groupId>
-            <artifactId>annotations</artifactId>
-            <version>${google-findbugs-annotations}</version>
-        </dependency>-->
-        <!-- https://mvnrepository.com/artifact/com.github.stephenc.findbugs/findbugs-annotations -->
-        <!--<dependency>
-            <groupId>com.github.stephenc.findbugs</groupId>
-            <artifactId>findbugs-annotations</artifactId>
-            <version>${stephenc-findbugs-annotations}</version>
-        </dependency>-->
-        <!-- https://mvnrepository.com/artifact/com.google.truth/truth -->
         <dependency>
             <groupId>com.google.truth</groupId>
             <artifactId>truth</artifactId>

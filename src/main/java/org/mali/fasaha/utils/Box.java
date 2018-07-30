@@ -15,7 +15,6 @@
  */
 package org.mali.fasaha.utils;
 
-import javax.annotation.Nullable;
 import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.DoubleConsumer;
@@ -139,7 +138,7 @@ public interface Box<T> extends Supplier<T>, Consumer<T> {
         /**
          * Creates a `Box.Nullable` holding the given possibly-null value in a `volatile` field.
          */
-        static <T> Nullable<T> ofVolatile(@javax.annotation.Nullable T init) {
+        static <T> Nullable<T> ofVolatile(T init) {
             //checkNotNull(init, "Dude! Are you trying to initiate a box with a null value?");
             return new Volatile<>(init);
         }
@@ -154,7 +153,7 @@ public interface Box<T> extends Supplier<T>, Consumer<T> {
         /**
          * Creates a `Box.Nullable` holding the given possibly-null value in a non-`volatile` field.
          */
-        static <T> Nullable<T> of(@javax.annotation.Nullable T init) {
+        static <T> Nullable<T> of(T init) {
             //checkNotNull(init, "Dude! Are you trying to initiate a box with a null value?");
             return new Default<>(init);
         }
@@ -193,7 +192,7 @@ public interface Box<T> extends Supplier<T>, Consumer<T> {
         /**
          * Sets the value which will later be returned by get().
          */
-        void set(@javax.annotation.Nullable T value);
+        void set(T value);
 
         /**
          * Delegates to set().
@@ -201,7 +200,7 @@ public interface Box<T> extends Supplier<T>, Consumer<T> {
          * @deprecated Provided to satisfy the {@code Function} interface; use {@link #set} instead.
          */
         @Deprecated
-        default void accept(@javax.annotation.Nullable T value) {
+        default void accept(T value) {
             set(value);
         }
 
@@ -273,7 +272,7 @@ public interface Box<T> extends Supplier<T>, Consumer<T> {
             }
 
             @Override
-            public void set(@javax.annotation.Nullable T obj) {
+            public void set(T obj) {
                 this.obj = obj;
             }
 
