@@ -15,15 +15,7 @@
  */
 package org.mali.fasaha.utils;
 
-import org.junit.Before;
 import org.junit.Test;
-import org.mali.fasaha.utils.Throwing.IntConsumer;
-import org.mali.fasaha.utils.Throwing.Runnable;
-import org.mali.fasaha.utils.Throwing.Specific;
-
-import java.util.Arrays;
-import java.util.function.Consumer;
-import java.util.stream.IntStream;
 
 import static org.junit.Assert.*;
 
@@ -47,7 +39,7 @@ public class IntConsumerTest {
              * test I know which variable the Consumer is going to accept, so I can
              * dare create an assertion here. Feel free to report me to uncle Bob.
              * Warning: If this test fails, your build tools will still "pass" it,
-             * and quietly report an assertion error. Agail feel free to report me
+             * and quietly report an assertion error. Again feel free to report me
              * to uncle bob
              */
             assertEquals(0.0125, y, 0.0000);

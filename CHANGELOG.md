@@ -7,6 +7,11 @@ Changelog for arka implementation by mali-fasaha
 **Amended return type for wrap on IntConsumer to java.util.function.IntConsumer**
 
 
+[c9685d1e225489f](https://github.com/mali-fasaha/arka/commit/c9685d1e225489f) Edwin Njeru *2018-07-30 10:08:17*
+
+**Amended return type for wrap on IntConsumer to java.util.function.IntConsumer**
+
+
 [91df46a8ec5c059](https://github.com/mali-fasaha/arka/commit/91df46a8ec5c059) Edwin Njeru *2018-07-30 10:06:06*
 
 **Created cast for IntConsumer**
