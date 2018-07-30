@@ -242,6 +242,23 @@ public abstract class Errors implements Consumer<Throwable> {
     }
 
     /**
+     * Returns a Consumer whose exceptions are handled by this Errors.
+     *
+     * @param consumer a {@link org.mali.fasaha.utils.Throwing.Consumer} object.
+     * @return a {@link java.util.function.Consumer} object.
+     * @param <T> a T object.
+     */
+    public <T> Consumer<T> wrap(Throwing.IntConsumer consumer) {
+        return val -> {
+            try {
+                consumer.accept((Integer) val);
+            } catch (Throwable e) {
+                handler.accept(e);
+            }
+        };
+    }
+
+    /**
      * Namespace for the plugins which Errors supports.
      */
     public interface Plugins {
