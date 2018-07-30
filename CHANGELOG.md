@@ -4,6 +4,11 @@ Changelog for arka implementation by mali-fasaha
 ## Unreleased
 ### No issue
 
+**Implemented IntConsumerTest**
+
+
+[2f793239037e966](https://github.com/mali-fasaha/arka/commit/2f793239037e966) Edwin Njeru *2018-07-30 09:24:05*
+
 **Added the IntConsumer under the scope of Throwing overriding the definition in the specific scope**
 
 
