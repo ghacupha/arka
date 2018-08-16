@@ -4,6 +4,11 @@ Changelog for arka implementation by mali-fasaha
 ## Unreleased
 ### No issue
 
+**Ported to version 1.0.1 with modules**
+
+
+[7c051a6185153eb](https://github.com/mali-fasaha/arka/commit/7c051a6185153eb) Edwin Njeru *2018-07-30 16:01:53*
+
 **Removed unnecessary call to asList in FieldsAndGetters**
 
 
@@ -93,10 +98,6 @@ Changelog for arka implementation by mali-fasaha
 
 
 [244df830a43aa02](https://github.com/mali-fasaha/arka/commit/244df830a43aa02) ghacupha *2018-07-29 10:43:15*
-
-
-## 1.0-SNAPSHOT
-### No issue
 
 **Added license info to the converterTest**
 
