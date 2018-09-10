@@ -23,7 +23,7 @@
 
     <groupId>org.mali.fasaha</groupId>
     <artifactId>arka</artifactId>
-    <version>1.0.1-SNAPHOT</version>
+    <version>1.0-SNAPHOT</version>
 
     <name>arka</name>
     <description>Common utilities used in mali fasaha</description>
@@ -55,7 +55,7 @@
             <name>Sonatype Nexus Snapshots</name>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
             <releases>
-                <enabled>true</enabled>
+                <enabled>false</enabled>
             </releases>
             <snapshots>
                 <enabled>true</enabled>
@@ -81,7 +81,6 @@
         <maven.compiler.source>10</maven.compiler.source>
         <maven.compiler.target>10</maven.compiler.target>
         <maven-enforcer-required-maven-version>3.2.5</maven-enforcer-required-maven-version>
-        <sonatypeOssDistMgmtSnapshotsUrl>https://oss.sonatype.org/content/repositories/snapshots/</sonatypeOssDistMgmtSnapshotsUrl>
         <!--Dependecies versions-->
         <junit-version>4.12</junit-version>
         <guava-version>25.1-jre</guava-version>
@@ -119,17 +118,16 @@
         <linkXRef>false</linkXRef>
     </properties>
 
+
     <distributionManagement>
         <snapshotRepository>
-            <id>sonatype-nexus-snapshots</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>${sonatypeOssDistMgmtSnapshotsUrl}</url>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
-        <!--<repository>
-            <id>sonatype-nexus-staging</id>
-            <name>Nexus Release Repository</name>
+        <repository>
+            <id>ossrh</id>
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>-->
+        </repository>
     </distributionManagement>
 
     <build>
@@ -223,20 +221,6 @@
                 </configuration>
             </plugin>
         </plugins>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <version>2.1</version>
-                    <configuration>
-                        <mavenExecutorId>forked-path</mavenExecutorId>
-                        <useReleaseProfile>false</useReleaseProfile>
-                        <arguments>${arguments} -Prelease</arguments>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
     </build>
 
     <dependencies>
@@ -274,6 +258,49 @@
             <build>
                 <plugins>
                     <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.7</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                            <skipStaging>true</skipStaging>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-deploy-plugin</artifactId>
+                        <version>2.8.2</version>
+                        <executions>
+                            <execution>
+                                <id>default-deploy</id>
+                                <phase>deploy</phase>
+                                <goals>
+                                    <goal>deploy</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-release-plugin</artifactId>
+                        <version>2.5.3</version>
+                        <configuration>
+                            <localCheckout>true</localCheckout>
+                            <pushChanges>false</pushChanges>
+                            <mavenExecutorId>forked-path</mavenExecutorId>
+                            <!--<arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>-->
+                        </configuration>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.apache.maven.scm</groupId>
+                                <artifactId>maven-scm-provider-gitexe</artifactId>
+                                <version>1.9.4</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                    <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
                         <version>${maven-source-plugin-version}</version>
@@ -291,30 +318,6 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
                         <version>${maven-javadoc-plugin-version}</version>
-                        <!--<executions>
-                            <execution>
-                                <id>attach-javadocs</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>jar</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <show>public</show>
-                            <author>true</author>
-                            <version>false</version>
-                            <defaultSince>1.0-SNAPSHOT</defaultSince>
-                            <defaultVersion>1.0-SNAPSHOT</defaultVersion>
-                            <applyJavadocSecurityFix>true</applyJavadocSecurityFix>
-                            <ignoreClirr>false</ignoreClirr>
-                            <additionalOptions>
-                                <additionalOption>-Xdoclint:all</additionalOption>
-                                <additionalOption>-Xdoclint:-missing</additionalOption>
-                            </additionalOptions>
-                            &lt;!&ndash;<additionalparam>-Xdoclint:all -Xdoclint:-missing</additionalparam>
-                            <aggregate>false</aggregate>&ndash;&gt;
-                        </configuration>-->
                     </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>

@@ -4,6 +4,21 @@ Changelog for arka implementation by mali-fasaha
 ## Unreleased
 ### No issue
 
+**Remove staging repository**
+
+
+[e841c8ea31c4ba7](https://github.com/mali-fasaha/arka/commit/e841c8ea31c4ba7) Edwin Njeru *2018-09-10 07:42:46*
+
+**Add configuration for automatic snapshots**
+
+
+[07817cad62f06e9](https://github.com/mali-fasaha/arka/commit/07817cad62f06e9) Edwin Njeru *2018-09-10 07:40:50*
+
+**Add additional jdk's in travis**
+
+
+[5708920286ab7dd](https://github.com/mali-fasaha/arka/commit/5708920286ab7dd) Edwin Njeru *2018-09-10 07:37:15*
+
 **Add release profile**
 
 
