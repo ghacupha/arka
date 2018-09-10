@@ -2,7 +2,6 @@ language: java
 install: true
 script:
 - mvn clean verify
-- mvn clean package
 - mvn install
 jdk:
   - oraclejdk8
