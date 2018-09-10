@@ -21,23 +21,46 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>9</version>
-    </parent>
-
     <groupId>org.mali.fasaha</groupId>
     <artifactId>arka</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.1-SNAPHOT</version>
 
     <name>arka</name>
     <description>Common utilities used in mali fasaha</description>
     <inceptionYear>2018</inceptionYear>
+    <url>https://github.com/ghacupha</url>
+
+    <issueManagement>
+        <url>https://github.com/mali-fasaha/arka/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+
+    <scm>
+        <url>https://github.com/mali-fasaha/arka</url>
+        <connection>scm:git:git://github.com/mali-fasaha/arka.git</connection>
+        <developerConnection>scm:git:git@github.com:mali-fasaha/arka.git</developerConnection>
+    </scm>
+
+    <repositories>
+        <repository>
+            <id>sonatype-nexus-snapshots</id>
+            <name>Sonatype Nexus Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <developers>
         <developer>
             <email>mailnjeru@gmail.com</email>
+            <organization>mali-fasaha</organization>
+            <url>https://github.com/ghacupha</url>
+            <organizationUrl>https://github.com/mali-fasaha</organizationUrl>
             <name>Edwin Njeru</name>
         </developer>
     </developers>
@@ -47,10 +70,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!--Runtime Environment-->
-        <java-source-version>10</java-source-version>
-        <java-target-version>10</java-target-version>
-        <java-release-version>10</java-release-version>
+        <maven.compiler.source>10</maven.compiler.source>
+        <maven.compiler.target>10</maven.compiler.target>
         <maven-enforcer-required-maven-version>3.2.5</maven-enforcer-required-maven-version>
+        <sonatypeOssDistMgmtSnapshotsUrl>https://oss.sonatype.org/content/repositories/snapshots/</sonatypeOssDistMgmtSnapshotsUrl>
         <!--Dependecies versions-->
         <junit-version>4.12</junit-version>
         <guava-version>25.1-jre</guava-version>
@@ -88,6 +111,19 @@
         <linkXRef>false</linkXRef>
     </properties>
 
+    <distributionManagement>
+        <snapshotRepository>
+            <id>sonatype-nexus-snapshots</id>
+            <name>Sonatype Nexus Snapshots</name>
+            <url>${sonatypeOssDistMgmtSnapshotsUrl}</url>
+        </snapshotRepository>
+        <repository>
+            <id>sonatype-nexus-staging</id>
+            <name>Nexus Release Repository</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+
     <build>
         <plugins>
             <plugin>
@@ -95,13 +131,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <compilerArgs>
-                        <arg>-verbose</arg>
-                        <arg>-Xlint:all,-options,-path</arg>
-                    </compilerArgs>
-                    <!--<release>${java-release-version}</release>-->
-                    <source>${java-source-version}</source>
-                    <target>${java-target-version}</target>
+                    <release>10</release>
                 </configuration>
             </plugin>
             <!-- Print the change log as release notes...-->
@@ -185,6 +215,20 @@
                 </configuration>
             </plugin>
         </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>2.1</version>
+                    <configuration>
+                        <mavenExecutorId>forked-path</mavenExecutorId>
+                        <useReleaseProfile>false</useReleaseProfile>
+                        <arguments>${arguments} -Prelease</arguments>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 
     <dependencies>
@@ -218,92 +262,102 @@
 
     <profiles>
         <profile>
-            <id>docs</id>
+            <id>release</id>
             <build>
-            <plugins>
-                <!-- Setup Javadoc jar -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>${maven-javadoc-plugin-version}</version>
-                    <executions>
-                        <execution>
-                            <id>attach-javadocs</id>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>jar</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                    <configuration>
-                        <show>public</show>
-                        <author>true</author>
-                        <version>false</version>
-                        <defaultSince>1.0-SNAPSHOT</defaultSince>
-                        <defaultVersion>1.0-SNAPSHOT</defaultVersion>
-                        <applyJavadocSecurityFix>true</applyJavadocSecurityFix>
-                        <ignoreClirr>false</ignoreClirr>
-                        <additionalOptions>
-                            <additionalOption>-Xdoclint:all</additionalOption>
-                            <additionalOption>-Xdoclint:-missing</additionalOption>
-                        </additionalOptions>
-                        <!--<additionalparam>-Xdoclint:all -Xdoclint:-missing</additionalparam>
-                        <aggregate>false</aggregate>-->
-                    </configuration>
-                </plugin>
-                <!-- Setup source jar -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-source-plugin</artifactId>
-                    <version>${maven-source-plugin-version}</version>
-                    <executions>
-                        <execution>
-                            <id>attach-sources</id>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>jar-no-fork</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-
-                <!-- Setup scaffolding mycila license maven plugin-->
-                <!--Use with mvn "mvn license:check", "mvn license:format" & "mvn license:remove"-->
-                <plugin>
-                    <groupId>com.mycila</groupId>
-                    <artifactId>license-maven-plugin</artifactId>
-                    <version>${mycila.license.maven.plugin.version}</version>
-                    <configuration>
-                        <header>${license.header.location}</header>
-                        <headerDefinitions>${license.header.definition}</headerDefinitions>
-                        <properties>
-                            <owner>${license.maven.owner}</owner>
-                            <email>${license.maven.email}</email>
-                        </properties>
-                        <excludes>
-                            <exclude>**/README</exclude>
-                            <exclude>**/CHANGELOG.md</exclude>
-                            <exclude>**/CONTRIBUTING.md</exclude>
-                            <exclude>**/LICENSE</exclude>
-                            <exclude>**/logs/**</exclude>
-                            <exclude>**/.idea/**</exclude>
-                            <exclude>**/.mvn/**</exclude>
-                            <exclude>**/.okhttpcache/**</exclude>
-                            <exclude>**/target/**</exclude>
-                            <exclude>src/test/resources/**</exclude>
-                            <exclude>src/main/resources/**</exclude>
-                        </excludes>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <phase>verify</phase>
-                            <goals>
-                                <goal>check</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-            </plugins>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>${maven-source-plugin-version}</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>${maven-javadoc-plugin-version}</version>
+                        <!--<executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <show>public</show>
+                            <author>true</author>
+                            <version>false</version>
+                            <defaultSince>1.0-SNAPSHOT</defaultSince>
+                            <defaultVersion>1.0-SNAPSHOT</defaultVersion>
+                            <applyJavadocSecurityFix>true</applyJavadocSecurityFix>
+                            <ignoreClirr>false</ignoreClirr>
+                            <additionalOptions>
+                                <additionalOption>-Xdoclint:all</additionalOption>
+                                <additionalOption>-Xdoclint:-missing</additionalOption>
+                            </additionalOptions>
+                            &lt;!&ndash;<additionalparam>-Xdoclint:all -Xdoclint:-missing</additionalparam>
+                            <aggregate>false</aggregate>&ndash;&gt;
+                        </configuration>-->
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>com.mycila</groupId>
+                        <artifactId>license-maven-plugin</artifactId>
+                        <version>${mycila.license.maven.plugin.version}</version>
+                        <configuration>
+                            <header>${license.header.location}</header>
+                            <headerDefinitions>${license.header.definition}</headerDefinitions>
+                            <properties>
+                                <owner>${license.maven.owner}</owner>
+                                <email>${license.maven.email}</email>
+                            </properties>
+                            <excludes>
+                                <exclude>**/README</exclude>
+                                <exclude>**/CHANGELOG.md</exclude>
+                                <exclude>**/CONTRIBUTING.md</exclude>
+                                <exclude>**/LICENSE</exclude>
+                                <exclude>**/settings.xml</exclude>
+                                <exclude>**/logs/**</exclude>
+                                <exclude>**/.idea/**</exclude>
+                                <exclude>**/.mvn/**</exclude>
+                                <exclude>**/.okhttpcache/**</exclude>
+                                <exclude>**/target/**</exclude>
+                                <exclude>src/test/resources/**</exclude>
+                                <exclude>src/main/resources/**</exclude>
+                            </excludes>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
             </build>
             <reporting>
                 <plugins>

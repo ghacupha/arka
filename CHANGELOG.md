@@ -4,6 +4,21 @@ Changelog for arka implementation by mali-fasaha
 ## Unreleased
 ### No issue
 
+**Add sonatype oss version 9 as parent pom**
+
+
+[8a11f84a652d55d](https://github.com/mali-fasaha/arka/commit/8a11f84a652d55d) Edwin Njeru *2018-09-10 05:41:40*
+
+**Remove unnecessary package command from travis**
+
+
+[a82c07641866629](https://github.com/mali-fasaha/arka/commit/a82c07641866629) Edwin Njeru *2018-09-10 05:40:54*
+
+**Created docs profile and moved documentation plugins and all their dependencies there**
+
+
+[12185fd4faeb544](https://github.com/mali-fasaha/arka/commit/12185fd4faeb544) ghacupha *2018-08-16 07:48:04*
+
 **Ported to version 1.0.1 with modules**
 
 
@@ -98,6 +113,10 @@ Changelog for arka implementation by mali-fasaha
 
 
 [244df830a43aa02](https://github.com/mali-fasaha/arka/commit/244df830a43aa02) ghacupha *2018-07-29 10:43:15*
+
+
+## 1.0-SNAPSHOT
+### No issue
 
 **Added license info to the converterTest**
 
