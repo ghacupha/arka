@@ -4,6 +4,11 @@ Changelog for arka implementation by mali-fasaha
 ## Unreleased
 ### No issue
 
+**Add release profile**
+
+
+[9d4b181b6892d46](https://github.com/mali-fasaha/arka/commit/9d4b181b6892d46) Edwin Njeru *2018-09-10 07:23:47*
+
 **Add sonatype oss version 9 as parent pom**
 
 
