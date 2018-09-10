@@ -4,6 +4,21 @@ Changelog for arka implementation by mali-fasaha
 ## Unreleased
 ### No issue
 
+**Add oss parent version 9**
+
+
+[96ae0efdfeaeba0](https://github.com/mali-fasaha/arka/commit/96ae0efdfeaeba0) Edwin Njeru *2018-09-10 14:05:52*
+
+**:fire:Nuke the profiles**
+
+
+[9a1ea8f981ea777](https://github.com/mali-fasaha/arka/commit/9a1ea8f981ea777) Edwin Njeru *2018-09-10 14:03:54*
+
+**Added nexus staging plugin**
+
+
+[f67e8ff48f23dfe](https://github.com/mali-fasaha/arka/commit/f67e8ff48f23dfe) Edwin Njeru *2018-09-10 14:02:26*
+
 **Remove staging repository**
 
 
