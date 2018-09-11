@@ -4,6 +4,11 @@ Changelog for arka implementation by mali-fasaha
 ## Unreleased
 ### No issue
 
+**Override oss parent javadoc dependency with javadoc version 3.0.1**
+
+
+[cf845aef145998f](https://github.com/mali-fasaha/arka/commit/cf845aef145998f) Edwin Njeru *2018-09-10 14:15:33*
+
 **Add oss parent version 9**
 
 
