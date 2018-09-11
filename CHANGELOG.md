@@ -4,6 +4,11 @@ Changelog for arka implementation by mali-fasaha
 ## Unreleased
 ### No issue
 
+**Add specialized profile for sonatype uploads**
+
+
+[431b9f02b0a72e3](https://github.com/mali-fasaha/arka/commit/431b9f02b0a72e3) Edwin Njeru *2018-09-11 16:29:25*
+
 **Override oss parent javadoc dependency with javadoc version 3.0.1**
 
 

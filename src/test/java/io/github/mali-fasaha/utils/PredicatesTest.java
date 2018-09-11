@@ -35,7 +35,6 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
 
-import static com.google.common.base.CharMatcher.WHITESPACE;
 import static com.google.common.base.CharMatcher.whitespace;
 import static com.google.common.collect.Lists.newArrayList;
 

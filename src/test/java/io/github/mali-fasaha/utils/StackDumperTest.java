@@ -97,8 +97,8 @@ public class StackDumperTest {
 		String errOutput = testCaseErr.toString();
 		Assert.assertTrue(errOutput, errOutput.startsWith(StringPrinter.buildStringFromLines(
             "+----------\\",
-            "| some message", "| at org.mali.fasaha.utils.StackDumperTest.testDumpMethod(StackDumperTest.java:96)")));
-		Assert.assertTrue(errOutput, errOutput.endsWith(StringPrinter.buildStringFromLines("| at org.mali.fasaha.utils.StackDumperTest$1.run(StackDumperTest.java:62)",
+            "| some message", "| at StackDumperTest.testDumpMethod(StackDumperTest.java:96)")));
+		Assert.assertTrue(errOutput, errOutput.endsWith(StringPrinter.buildStringFromLines("| at StackDumperTest$1.run(StackDumperTest.java:62)",
                                                                                            "+----------/")));
 	}
 
@@ -109,7 +109,7 @@ public class StackDumperTest {
 			StackDumper.dump("some message", StackDumper.captureStackBelow(StackDumperTest.class));
 			Assert.assertEquals(StringPrinter.buildStringFromLines(
                 "+----------\\",
-                "| some message", "| at org.mali.fasaha.utils.StackDumperTest$1.run(StackDumperTest.java:62)",
+                "| some message", "| at StackDumperTest$1.run(StackDumperTest.java:62)",
                 "+----------/"), testCaseErr.toString());
 		});
 	}
@@ -130,7 +130,7 @@ public class StackDumperTest {
 			Assert.assertTrue(errOutput.startsWith(StringPrinter.buildStringFromLines(
 					"+----------\\",
 					"| Triggered by Who did this?")));
-			Assert.assertTrue(errOutput.endsWith(StringPrinter.buildStringFromLines("| at org.mali.fasaha.utils.StackDumperTest$1.run(StackDumperTest.java:62)",
+			Assert.assertTrue(errOutput.endsWith(StringPrinter.buildStringFromLines("| at StackDumperTest$1.run(StackDumperTest.java:62)",
                                                                                     "+----------/")));
 		});
 	}
@@ -153,7 +153,7 @@ public class StackDumperTest {
 					"Who did this?",
 					"+----------\\",
 					"| Triggered by Who did this?")));
-			Assert.assertTrue(errOutput.endsWith(StringPrinter.buildStringFromLines("| at org.mali.fasaha.utils.StackDumperTest$1.run(StackDumperTest.java:62)",
+			Assert.assertTrue(errOutput.endsWith(StringPrinter.buildStringFromLines("| at StackDumperTest$1.run(StackDumperTest.java:62)",
                                                                                     "+----------/")));
 		});
 	}

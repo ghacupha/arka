@@ -83,7 +83,7 @@ public class PluginsTest {
 	@Test
 	public void testSystemProperty() {
 		// set the system property to TestLogHandler's name
-        System.setProperty("org.mali.fasaha.utils.Errors.Plugins.Log", TestLogHandler.class.getName());
+        System.setProperty("Errors.Plugins.Log", TestLogHandler.class.getName());
 		// get the property with TheWrongLogHandler as the default
 		Consumer<Throwable> impl = Plugins.get(Errors.Plugins.Log.class, new TheWrongLogHandler());
 		// make sure it's the right value

@@ -16,8 +16,6 @@
 package org.mali.fasaha.utils;
 
 import java.util.Objects;
-import java.util.function.Consumer;
-import java.util.function.IntConsumer;
 
 /**
  * Variations on the standard functional interfaces which throw Throwable.

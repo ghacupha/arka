@@ -16,7 +16,6 @@
 package org.mali.fasaha.utils;
 
 import org.junit.Test;
-import org.mali.fasaha.utils.Throwing.Specific.IntConsumer;
 
 import java.util.stream.IntStream;
 
