@@ -4,6 +4,11 @@ Changelog for arka implementation by mali-fasaha
 ## Unreleased
 ### No issue
 
+**Align namespaces and packages with sonatype group id and remove snapshot declaration in the version id**
+
+
+[60ca24bdb5638be](https://github.com/mali-fasaha/arka/commit/60ca24bdb5638be) ghacupha *2018-09-11 19:46:57*
+
 **Add specialized profile for sonatype uploads**
 
 

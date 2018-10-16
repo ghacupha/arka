@@ -13,8 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-module org.mali.fasaha.utils {
+module mali.fasaha.utils {
     requires java.desktop;
     requires error.prone.annotations;
-    exports org.mali.fasaha.utils;
+
+    exports io.github.mali.fasaha.utils;
 }
